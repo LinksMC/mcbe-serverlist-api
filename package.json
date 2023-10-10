@@ -2,9 +2,9 @@
 	"name": "mcbe-serverlist-api",
 	"version": "0.1.0",
 	"description": "",
-	"main": "index.js",
+	"main": "server.js",
 	"scripts": {
-		"dev": "ts-node src/index.ts"
+		"dev": "ts-node src/server.ts"
 	},
 	"keywords": [],
 	"author": "skuralll",

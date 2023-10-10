@@ -1,11 +1,8 @@
 import dotenv from "dotenv";
-import express from "express";
+import { app } from "./app";
 
 // 環境変数の読み込み
 dotenv.config();
-
-const app: express.Express = express();
-app.use(express.json());
 
 // サーバーの起動
 app.listen(process.env.API_SERVER_PORT, () => {
