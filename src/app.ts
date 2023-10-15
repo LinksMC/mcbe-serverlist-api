@@ -1,7 +1,7 @@
 import express from "express";
 import { GenToken } from "./routes/authmc/gen-token";
 import { AuthToken } from "./routes/authmc/auth-token";
-import { CheckAddress } from "./routes/authserver/check-address";
+import { CheckAddress } from "./routes/authserver/gen-token";
 
 export const app = express();
 
@@ -16,5 +16,5 @@ authmc.post("/auth-token", AuthToken);
 app.use("/authmc", authmc);
 // Minecraftサーバー認証API
 const authserver = express.Router();
-authmc.post("/check-address", CheckAddress);
+authserver.post("/gen-token", CheckAddress);
 app.use("/authserver", authserver);
