@@ -76,6 +76,5 @@ export async function GenUserToken(
       });
       console.log(e);
     }
-    return;
   }
 }
