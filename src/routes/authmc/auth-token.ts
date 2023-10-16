@@ -18,7 +18,7 @@ type AuthUserTokenResBody = {
 
 export async function AuthUserToken(
   req: Request<AuthUserTokenReqBody>,
-  res: ExResponse<AuthUserTokenResBody>
+  res: ExResponse<AuthUserTokenResBody>,
 ) {
   // TODO: 前提条件確認
 

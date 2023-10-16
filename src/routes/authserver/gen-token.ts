@@ -19,7 +19,7 @@ type GenServerTokenResBody = {
 
 export async function GenServerToken(
   req: Request<GenServerTokenReqBody>,
-  res: ExResponse<GenServerTokenResBody>
+  res: ExResponse<GenServerTokenResBody>,
 ) {
   // TODO: 前提条件確認
 
