@@ -5,20 +5,20 @@ import { prisma } from "../../db/prisma";
 import { getElapsedTime } from "../../lib/date";
 
 // POST /authmc/auth-token : トークンを認証する
-type AuthTokenReqBody = {
+type AuthUserTokenReqBody = {
   id: string;
   token: string;
 };
 
-type AuthTokenResBody = {
+type AuthUserTokenResBody = {
   edition: string;
   name: string;
   mcid: string;
 };
 
-export async function AuthToken(
-  req: Request<AuthTokenReqBody>,
-  res: ExResponse<AuthTokenResBody>
+export async function AuthUserToken(
+  req: Request<AuthUserTokenReqBody>,
+  res: ExResponse<AuthUserTokenResBody>
 ) {
   // TODO: 前提条件確認
 

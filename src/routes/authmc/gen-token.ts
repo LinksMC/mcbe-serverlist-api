@@ -4,20 +4,20 @@ import { CreateToken, getTokenLifetime } from "../../lib/token";
 import { prisma } from "../../db/prisma";
 
 // POST /authmc/gen-token : マインクラフト認証用のトークンを生成する
-type GenTokenReqBody = {
+type GenUserTokenReqBody = {
   edition: string;
   name: string;
   mcid: string;
 };
 
-type GenTokenResBody = {
+type GenUserTokenResBody = {
   token: string;
   lifetime: number;
 };
 
-export async function GenToken(
-  req: Request<GenTokenReqBody>,
-  res: ExResponse<GenTokenResBody>
+export async function GenUserToken(
+  req: Request<GenUserTokenReqBody>,
+  res: ExResponse<GenUserTokenResBody>
 ) {
   // TODO: 前提条件確認
 
