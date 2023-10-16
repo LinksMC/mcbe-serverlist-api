@@ -17,7 +17,7 @@ type GenUserTokenResBody = {
 
 export async function GenUserToken(
   req: Request<GenUserTokenReqBody>,
-  res: ExResponse<GenUserTokenResBody>,
+  res: ExResponse<GenUserTokenResBody>
 ) {
   // TODO: 前提条件確認
 

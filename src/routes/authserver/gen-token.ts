@@ -19,7 +19,7 @@ type GenServerTokenResBody = {
 
 export async function GenServerToken(
   req: Request<GenServerTokenReqBody>,
-  res: ExResponse<GenServerTokenResBody>,
+  res: ExResponse<GenServerTokenResBody>
 ) {
   // TODO: 前提条件確認
 
@@ -32,11 +32,7 @@ export async function GenServerToken(
   });
   if (server != null) {
     res.status(404).json({
-      errors: [
-        {
-          message: "すでに登録されています",
-        },
-      ],
+      message: "すでに登録されています",
     });
     return;
   }
@@ -49,11 +45,7 @@ export async function GenServerToken(
   });
   if (authRequest != null) {
     res.status(404).json({
-      errors: [
-        {
-          message: "すでに認証リクエストが生成されています",
-        },
-      ],
+      message: "すでに認証リクエストが生成されています",
     });
     return;
   }
@@ -77,46 +69,27 @@ export async function GenServerToken(
     return;
   } catch (e) {
     // エラーハンドリング
+    console.log(e);
     // TODO リファクタリング
     if (!(e instanceof Error)) {
       res.status(404).json({
-        errors: [
-          {
-            message: "未定義のエラー",
-          },
-        ],
+        message: "未定義のエラー",
       });
     } else if (e instanceof PrismaClientKnownRequestError) {
       res.status(404).json({
-        errors: [
-          {
-            message: "データベースエラー",
-          },
-        ],
+        message: "データベースエラー",
       });
     } else if (e.message.startsWith("Invalid connection address")) {
       res.status(404).json({
-        errors: [
-          {
-            message: "アドレスが不正です",
-          },
-        ],
+        message: "アドレスが不正です",
       });
     } else if (e.message.startsWith("Ping timed out")) {
       res.status(404).json({
-        errors: [
-          {
-            message: "サーバーへ接続できません",
-          },
-        ],
+        message: "サーバーへ接続できません",
       });
     } else {
       res.status(404).json({
-        errors: [
-          {
-            message: "未定義のエラー",
-          },
-        ],
+        message: `未定義のエラー: ${e.name}}`,
       });
     }
     return;

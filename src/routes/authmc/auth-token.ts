@@ -18,7 +18,7 @@ type AuthUserTokenResBody = {
 
 export async function AuthUserToken(
   req: Request<AuthUserTokenReqBody>,
-  res: ExResponse<AuthUserTokenResBody>,
+  res: ExResponse<AuthUserTokenResBody>
 ) {
   // TODO: 前提条件確認
 
@@ -30,11 +30,7 @@ export async function AuthUserToken(
   });
   if (authRequest == null) {
     res.status(404).json({
-      errors: [
-        {
-          message: "トークンが見つかりません",
-        },
-      ],
+      message: "トークンが見つかりません",
     });
     return;
   }
@@ -42,11 +38,7 @@ export async function AuthUserToken(
   const elapsed = getElapsedTime(authRequest.updatedAt);
   if (elapsed > getTokenLifetime()) {
     res.status(404).json({
-      errors: [
-        {
-          message: "トークンの有効期限が切れています",
-        },
-      ],
+      message: "トークンの有効期限が切れています",
     });
     return;
   }
@@ -58,11 +50,7 @@ export async function AuthUserToken(
   });
   if (user == null) {
     res.status(404).send({
-      errors: [
-        {
-          message: "ユーザーが見つかりません",
-        },
-      ],
+      message: "ユーザーが見つかりません",
     });
     return;
   }
@@ -75,11 +63,7 @@ export async function AuthUserToken(
   });
   if (minecraftAccount != null) {
     res.status(409).json({
-      errors: [
-        {
-          message: "既に連携しています",
-        },
-      ],
+      message: "既に連携しています",
     });
     return;
   }
