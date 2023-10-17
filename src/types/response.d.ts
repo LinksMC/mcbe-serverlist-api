@@ -1,5 +1,5 @@
-import { Response } from "express";
-import { Send } from "express-serve-static-core";
+import { Response } from 'express';
+import { Send } from 'express-serve-static-core';
 
 interface ErrorResponse {
   message: string;

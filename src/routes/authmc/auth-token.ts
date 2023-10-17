@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import { ExResponse } from "../../types/response";
-import { CreateToken, getTokenLifetime } from "../../lib/token";
-import { prisma } from "../../db/prisma";
-import { getElapsedTime } from "../../lib/date";
-import { z } from "zod";
-import { isPrismaError } from "../../lib/db";
+import { Request, Response } from 'express';
+import { ExResponse } from '../../types/response';
+import { CreateToken, getTokenLifetime } from '../../lib/token';
+import { prisma } from '../../db/prisma';
+import { getElapsedTime } from '../../lib/date';
+import { z } from 'zod';
+import { isPrismaError } from '../../lib/db';
 
 // POST /authmc/auth-token : トークンを認証する
 
@@ -38,7 +38,7 @@ export async function AuthUserToken(
     });
     if (authRequest == null) {
       res.status(404).json({
-        message: "トークンが見つかりません",
+        message: 'トークンが見つかりません',
       });
       return;
     }
@@ -46,7 +46,7 @@ export async function AuthUserToken(
     const elapsed = getElapsedTime(authRequest.updatedAt);
     if (elapsed > getTokenLifetime()) {
       res.status(404).json({
-        message: "トークンの有効期限が切れています",
+        message: 'トークンの有効期限が切れています',
       });
       return;
     }
@@ -58,7 +58,7 @@ export async function AuthUserToken(
     });
     if (user == null) {
       res.status(404).send({
-        message: "ユーザーが見つかりません",
+        message: 'ユーザーが見つかりません',
       });
       return;
     }
@@ -71,7 +71,7 @@ export async function AuthUserToken(
     });
     if (minecraftAccount != null) {
       res.status(409).json({
-        message: "既に連携しています",
+        message: '既に連携しています',
       });
       return;
     }
@@ -100,16 +100,16 @@ export async function AuthUserToken(
     // TODO リファクタリング
     if (!(e instanceof Error)) {
       res.status(404).json({
-        message: "未定義のエラー",
+        message: '未定義のエラー',
       });
       console.log(e);
     } else if (e instanceof z.ZodError) {
       res.status(404).json({
-        message: "リクエストパラメータが不正です",
+        message: 'リクエストパラメータが不正です',
       });
     } else if (isPrismaError(e)) {
       res.status(404).json({
-        message: "データベースエラー",
+        message: 'データベースエラー',
       });
       console.log(e);
     } else {

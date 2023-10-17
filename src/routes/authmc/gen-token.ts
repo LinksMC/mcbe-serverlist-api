@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
-import { ExResponse } from "../../types/response";
-import { CreateToken, getTokenLifetime } from "../../lib/token";
-import { prisma } from "../../db/prisma";
-import { z } from "zod";
-import { isPrismaError } from "../../lib/db";
+import { Request, Response } from 'express';
+import { ExResponse } from '../../types/response';
+import { CreateToken, getTokenLifetime } from '../../lib/token';
+import { prisma } from '../../db/prisma';
+import { z } from 'zod';
+import { isPrismaError } from '../../lib/db';
 
 // POST /authmc/gen-token : マインクラフト認証用のトークンを生成する
 
@@ -58,16 +58,16 @@ export async function GenUserToken(
     // TODO リファクタリング
     if (!(e instanceof Error)) {
       res.status(404).json({
-        message: "未定義のエラー",
+        message: '未定義のエラー',
       });
       console.log(e);
     } else if (e instanceof z.ZodError) {
       res.status(404).json({
-        message: "リクエストパラメータが不正です",
+        message: 'リクエストパラメータが不正です',
       });
     } else if (isPrismaError(e)) {
       res.status(404).json({
-        message: "データベースエラー",
+        message: 'データベースエラー',
       });
       console.log(e);
     } else {

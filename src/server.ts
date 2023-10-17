@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
-import { app } from "./app";
+import dotenv from 'dotenv';
+import { app } from './app';
 
 // 環境変数の読み込み
 dotenv.config();
