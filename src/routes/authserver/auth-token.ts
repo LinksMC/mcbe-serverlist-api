@@ -41,7 +41,7 @@ export async function AuthServerToken(
       return;
     }
     // Minecraftサーバーへpingを送信し情報を取得する
-    const mcRes = await ping({ host: req.body.ip, port: req.body.port });
+    const mcRes = await ping({ host: authRequest.ip, port: authRequest.port });
     // トークンがmotdに含まれているか確認する
     if (!mcRes.motd.includes(authRequest.token)) {
       res.status(404).json({
