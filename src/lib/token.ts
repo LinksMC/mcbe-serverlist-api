@@ -1,4 +1,4 @@
-import crypto from "crypto";
+import crypto from 'crypto';
 
 // 環境変数が定義されていない場合のデフォルト値
 const DEFAULT_TOKEN_LIFETIME = 300;
@@ -24,8 +24,8 @@ export function getTokenLength(): number {
 
 // トークンを生成する
 export function CreateToken(): string {
-  const S = "abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789";
+  const S = 'abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ23456789';
   return Array.from(crypto.getRandomValues(new Uint32Array(getTokenLength())))
     .map((v) => S[v % S.length])
-    .join("");
+    .join('');
 }
