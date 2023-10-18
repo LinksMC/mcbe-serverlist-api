@@ -16,7 +16,7 @@ import { isTypeOfOne } from '../../lib/utils';
 import { isPrismaError } from '../../lib/db';
 import { z } from 'zod';
 
-// POST /authserver/check-address : Minecraftサーバーが存在するか確認する
+// POST /authserver/gen-token : Minecraftサーバーが存在するか確認し、認証用トークンを生成する
 
 // リクエストボディの型定義
 const GenServerTokenReqBody = z.object({
@@ -37,7 +37,6 @@ export async function GenServerToken(
   req: Request<GenServerTokenReqBodyType>,
   res: ExResponse<GenServerTokenResBodyType>
 ) {
-  // サーバー存在確認・トークン作成
   try {
     // プロパティが揃っているかを確認する
     GenServerTokenReqBody.parse(req.body);
