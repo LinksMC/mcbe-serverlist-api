@@ -59,9 +59,10 @@ export async function AuthServerToken(
       },
     });
     // サーバー認証リクエストを削除する
-    await prisma.minecraftServerAuthRequest.delete({
+    await prisma.minecraftServerAuthRequest.deleteMany({
       where: {
-        id: authRequest.id,
+        ip: authRequest.ip,
+        port: authRequest.port,
       },
     });
     // レスポンスを返す
