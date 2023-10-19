@@ -54,18 +54,18 @@ export async function GenServerToken(
       return;
     }
     // 既に認証リクエストが生成されていないか確認
-    const authRequest = await prisma.minecraftServerAuthRequest.findFirst({
-      where: {
-        ip: req.body.ip,
-        port: req.body.port,
-      },
-    });
-    if (authRequest != null) {
-      res.status(404).json({
-        message: 'すでに認証リクエストが生成されています',
-      });
-      return;
-    }
+    // const authRequest = await prisma.minecraftServerAuthRequest.findFirst({
+    //   where: {
+    //     ip: req.body.ip,
+    //     port: req.body.port,
+    //   },
+    // });
+    // if (authRequest != null) {
+    //   res.status(404).json({
+    //     message: 'すでに認証リクエストが生成されています',
+    //   });
+    //   return;
+    // }
     //サーバー疎通確認
     const mcRes = await ping({ host: req.body.ip, port: req.body.port });
     // UserのminecraftServerAuthRequestsに追加
