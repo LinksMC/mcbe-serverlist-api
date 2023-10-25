@@ -20,7 +20,7 @@ import { z } from 'zod';
 
 // リクエストボディの型定義
 const EditServerInfoReqBody = z.object({
-  id: z.number(),
+  id: z.string(),
   name: z.string(),
   published: z.boolean(),
   showIP: z.boolean(),

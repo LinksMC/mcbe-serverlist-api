@@ -17,7 +17,7 @@ type AuthServerTokenReqBodyType = z.infer<typeof AuthServerTokenReqBody>;
 
 // レスポンスボディの型定義
 const AuthServerTokenResBody = z.object({
-  id: z.number(), // サーバーID
+  id: z.string(), // サーバーID
 });
 type AuthServerTokenResBodyType = z.infer<typeof AuthServerTokenResBody>;
 
