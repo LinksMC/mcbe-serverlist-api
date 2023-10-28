@@ -24,6 +24,7 @@ const EditServerInfoReqBody = z.object({
   name: z.string(),
   published: z.boolean(),
   showIP: z.boolean(),
+  description: z.string(),
 });
 type EditServerInfoReqBodyType = z.infer<typeof EditServerInfoReqBody>;
 
@@ -58,6 +59,7 @@ export async function EditServerInfo(
         name: req.body.name,
         published: req.body.published,
         showIP: req.body.showIP,
+        description: req.body.description,
       },
     });
     res.status(201).json({});
